@@ -1,0 +1,21 @@
+node_modules/
+dist/
+*.js.map
+.env
+.env.*
+!.env.example
+logs/
+data/
+*.log
+coverage/
+tmp/
+state/
+meta/
+metrics/
+backups/
+
+# Runtime data directories (seed/ has checked-in defaults)
+agents/
+skills/
+automation/
+config/

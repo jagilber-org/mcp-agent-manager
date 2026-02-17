@@ -1,0 +1,41 @@
+{
+  "name": "mcp-agent-manager",
+  "version": "0.5.3",
+  "private": true,
+  "type": "module",
+  "description": "MCP Agent Manager - Manages, monitors, and orchestrates AI agents via MCP with skills-driven routing",
+  "main": "dist/server/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node scripts/kill-stale-servers.cjs",
+    "kill": "node scripts/kill-stale-servers.cjs",
+    "start": "node dist/server/index.js",
+    "dev": "node --watch dist/server/index.js",
+    "prestart": "npm run build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:cdp": "node tests/dashboard-cdp.mjs",
+    "test:self": "node scripts/self-test.mjs",
+    "test:self:cdp-only": "node scripts/self-test.mjs --cdp-only",
+    "test:multi": "node scripts/multi-instance-test.mjs",
+    "test:multi:skip-copilot": "node scripts/multi-instance-test.mjs --skip-copilot",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint . --ext .ts",
+    "validate": "npm run build && vitest run && node scripts/validate-build.cjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^22.0.0",
+    "eslint": "^9.0.0",
+    "puppeteer-core": "^24.37.2",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
